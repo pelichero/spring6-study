@@ -33,7 +33,6 @@ public class BootstrapData implements CommandLineRunner {
         publisher.setState("Chicago");
 
         Publisher publisherSaved = publisherRepository.save(publisher);
-        System.out.println("Publishers count: "+publisherRepository.count());
 
         Author author = new Author();
         author.setFirstName("Felipe");
@@ -59,15 +58,12 @@ public class BootstrapData implements CommandLineRunner {
 
         savedFelipe.getBooks().add(savedDDD);
         savedRod.getBooks().add(savedNoEJB);
+        savedDDD.getAuthors().add(savedFelipe);
+        savedNoEJB.getAuthors().add(savedRod);
 
         authorRepository.save(savedFelipe);
         authorRepository.save(savedRod);
 
-        System.out.println(savedFelipe);
-        System.out.println(savedRod);
-
-        System.out.println("Books count: " + bookRepository.count());
-        System.out.println("Authors count: " + authorRepository.count());
 
         savedDDD.setPublisher(publisherSaved);
         savedNoEJB.setPublisher(publisherSaved);
@@ -75,8 +71,9 @@ public class BootstrapData implements CommandLineRunner {
         bookRepository.save(savedDDD);
         bookRepository.save(savedNoEJB);
 
-        System.out.println(savedDDD);
-        System.out.println(savedNoEJB);
+        System.out.println("Books count: " + bookRepository.count());
+        System.out.println("Authors count: " + authorRepository.count());
+        System.out.println("Publishers count: " + publisherRepository.count());
 
         //System.out.println(publisherRepository.findAll());
     }
