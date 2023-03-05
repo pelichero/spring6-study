@@ -26,6 +26,8 @@ public class BootstrapData implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
 
+        if(true) return;
+
         Publisher publisher = new Publisher();
         publisher.setAddress("Chicago St. 123");
         publisher.setName("Pelisou Inc.");
